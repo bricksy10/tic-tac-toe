@@ -13,48 +13,52 @@
 </head>
 <body>
   <h1>Tic Tac Toe</h1>
+
   <div id='unauthenticated'>
-    <form id="sign-up">
-      <input type="text" name="credentials[email]" placeholder="Email">
-      <input type="text" name="credentials[password]" placeholder="Password">
-      <input type="text" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+    <form action="sign-up">
+      <input type="text" placeholder="User Email" name="credentials[email]">
+      <input type="text" name="credentials[password]">
+      <input type="text" name="credentials[password_confirmation]">
       <button type="submit">Sign Up</button>
     </form>
 
-    <form id="Sign-in">
-      <input type="text" name="credentials[email]" placeholder="Email">
-      <input type="password" name="credentials[password]" placeholder="Password">
+    <form action="Sign-in">
+      <input type="text" name="credentials[email]">
+      <input type="password" name="credentials[password]">
       <button type="submit">Sign In</button>
     </form>
   </div>
 
   <div id='authenticated'>
-    <form id="change-password">
-      <input type="password" name="passwords[old]" placeholder="Old Password">
-      <input type="password" name="passwords[new]" placeholder="New Password">
+    <form action="change-password">
+      <input type="password" name="passwords[old]">
+      <input type="password" name="passwords[new]">
       <button type="submit">Change Password</button>
     </form>
 
-    <form id="sign-out">
+    <form action="sign-out">
       <input type="submit" value="Sign Out">
     </form>
   </div>
 
-  <div class="board-container">
-    <div id="0" class="box"></div>
-    <div id="1" class="box"></div>
-    <div id="2" class="box"></div>
-
-    <div id="3" class="box"></div>
-    <div id="4" class="box"></div>
-    <div id="5" class="box"></div>
-
-    <div id="6" class="box"></div>
-    <div id="7" class="box"></div>
-    <div id="8" class="box"></div>
+  <div class="container">
+    <div class="game-board">
+      <div id="block_0" class="block"></div>
+      <div id="block_1" class="block"></div>
+      <div id="block_2" class="block"></div>
+      <div id="block_3" class="block"></div>
+      <div id="block_4" class="block"></div>
+      <div id="block_5" class="block"></div>
+      <div id="block_6" class="block"></div>
+      <div id="block_7" class="block"></div>
+      <div id="block_8" class="block"></div>
+    </div>
   </div>
 
-
+  <div class="container">
+    <h2 id=""></h2>
+    <button onclick="play_again()">Play Again!</button>
+  </div>
 
 </body>
 </html>
