@@ -17,22 +17,22 @@
   <div id='unauthenticated'>
     <form action="sign-up">
       <input type="text" placeholder="User Email" name="credentials[email]">
-      <input type="text" name="credentials[password]">
-      <input type="text" name="credentials[password_confirmation]">
+      <input type="text" placeholder="User Password" name="credentials[password]">
+      <input type="text" placeholder="User Password Again" name="credentials[password_confirmation]">
       <button type="submit">Sign Up</button>
     </form>
 
     <form action="Sign-in">
-      <input type="text" name="credentials[email]">
-      <input type="password" name="credentials[password]">
+      <input type="text" placeholder="User Email" name="credentials[email]">
+      <input type="password" placeholder="User Password" name="credentials[password]">
       <button type="submit">Sign In</button>
     </form>
   </div>
 
   <div id='authenticated'>
     <form action="change-password">
-      <input type="password" name="passwords[old]">
-      <input type="password" name="passwords[new]">
+      <input type="password" placeholder="Old Password"name="passwords[old]">
+      <input type="password" placeholder="New Password" name="passwords[new]">
       <button type="submit">Change Password</button>
     </form>
 
