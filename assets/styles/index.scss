@@ -15,7 +15,15 @@ h1 {
   right: 0;
 }
 
+.start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
+  margin: 100px;
+  padding: 10px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,8 +34,8 @@ h1 {
 
 .game-board {
   display: grid;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   grid-template-columns: auto auto auto;
 }
 
@@ -41,7 +49,11 @@ h1 {
   font-weight: bold;
   border: 3px solid black;
   transition: background 0.2s ease-in-out;
+  &:hover {
+    background: rgba(2, 2, 2, .3);
+  }
 }
+
 
 #block_0,
 #block_1,
@@ -65,4 +77,10 @@ h1 {
 #block_5,
 #block_8 {
   border-right: none;
+}
+
+.replay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

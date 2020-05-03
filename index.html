@@ -15,14 +15,14 @@
   <h1>Tic Tac Toe</h1>
 
   <div id='unauthenticated'>
-    <form action="sign-up">
+    <form id="sign-up">
       <input type="text" placeholder="User Email" name="credentials[email]">
       <input type="text" placeholder="User Password" name="credentials[password]">
       <input type="text" placeholder="User Password Again" name="credentials[password_confirmation]">
       <button type="submit">Sign Up</button>
     </form>
 
-    <form action="Sign-in">
+    <form id="Sign-in">
       <input type="text" placeholder="User Email" name="credentials[email]">
       <input type="password" placeholder="User Password" name="credentials[password]">
       <button type="submit">Sign In</button>
@@ -30,15 +30,20 @@
   </div>
 
   <div id='authenticated'>
-    <form action="change-password">
+    <form id="change-password">
       <input type="password" placeholder="Old Password"name="passwords[old]">
       <input type="password" placeholder="New Password" name="passwords[new]">
       <button type="submit">Change Password</button>
     </form>
 
-    <form action="sign-out">
+    <form id="sign-out">
       <input type="submit" value="Sign Out">
     </form>
+  </div>
+
+  <div class="start">
+    <h2 id="play"></h2>
+    <button onclick="play_game()">Start Game!</button>
   </div>
 
   <div class="container">
@@ -55,8 +60,8 @@
     </div>
   </div>
 
-  <div class="container">
-    <h2 id=""></h2>
+  <div class="replay">
+    <h2 id="restart"></h2>
     <button onclick="play_again()">Play Again!</button>
   </div>
 
