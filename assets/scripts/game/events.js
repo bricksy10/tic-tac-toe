@@ -15,19 +15,20 @@ const onPlayGame = function (event) {
 }
 
 const onIndexGames = function (event) {
+  event.preventDefault()
   api.indexGames()
     .then(ui.indexGamesSuccess)
     .catch(ui.indexGamesFailure)
 }
 
-const onShowGame = function (event) {
-  event.preventDefault()
-  const form = event.target
-  const formData = getFormFields(form)
-  api.showGame(formData.game.id)
-    .then(ui.showGameSuccess)
-    .catch(ui.showGameFailure)
-}
+// const onShowGame = function (event) {
+//   event.preventDefault()
+//   const form = event.target
+//   const formData = getFormFields(form)
+//   api.showGame(formData.game.id)
+//     .then(ui.showGameSuccess)
+//     .catch(ui.showGameFailure)
+// }
 
 const onUpdateGame = function (event) {
   event.preventDefault()
@@ -41,6 +42,6 @@ const onUpdateGame = function (event) {
 module.exports = {
   onPlayGame,
   onIndexGames,
-  onShowGame,
+  // onShowGame,
   onUpdateGame
 }

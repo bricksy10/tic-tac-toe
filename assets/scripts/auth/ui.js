@@ -4,6 +4,8 @@ const signUpSuccess = function (data) {
   $('#message').text('Signed up successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('#authenticated').show()
+  $('#unauthenticated').hide()
   console.log('signUpSuccess ran. Data is :', data)
 }
 
@@ -18,6 +20,8 @@ const signInSuccess = function (data) {
   $('#message').text('Signed in successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('#authenticated').show()
+  $('#unauthenticated').hide()
   console.log('signInSuccess ran. Data is :', data)
   store.user = data.user
 }
@@ -32,6 +36,8 @@ const signInFailure = function (error) {
 const signOutSuccess = function () {
   $('#message').text('Signed out successfully')
   $('#message').removeClass()
+  $('#unauthenticated').show()
+  $('#authenticated').hide()
   $('#message').addClass('success')
   $('form').trigger('reset')
   console.log('signOutSuccess ran and nothing was returned!')
@@ -49,6 +55,8 @@ const changePasswordSuccess = function () {
   $('#message').text('Changed password successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('#unauthenticated').show()
+  $('#authenticated').hide()
   console.log('changePasswordSuccess ran and nothing was returned!')
 }
 
