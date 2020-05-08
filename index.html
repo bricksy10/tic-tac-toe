@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+<body>
+  <h1>Tic Tac Toe</h1>
+
+  <div id="message"></div>
+  <div id='unauthenticated'>
+    <form id="sign-up">
+      <input type="text" placeholder="User Email" name="credentials[email]">
+      <input type="text" placeholder="User Password" name="credentials[password]">
+      <input type="text" placeholder="User Password Again" name="credentials[password_confirmation]">
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <form id="Sign-in">
+      <input type="text" placeholder="User Email" name="credentials[email]">
+      <input type="password" placeholder="User Password" name="credentials[password]">
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+
+  <div id='authenticated'>
+    <form id="change-password">
+      <input type="password" placeholder="Old Password"name="passwords[old]">
+      <input type="password" placeholder="New Password" name="passwords[new]">
+      <button type="submit">Change Password</button>
+    </form>
+
+    <form id="sign-out">
+      <input type="submit" value="Sign Out">
+    </form>
+  </div>
+
+  <div class="start">
+    <h2 id="play"></h2>
+    <button onclick="play_game()">Start Game!</button>
+  </div>
+
+  <div class="container">
+    <div class="game-board">
+      <div id="block_0" class="block"></div>
+      <div id="block_1" class="block"></div>
+      <div id="block_2" class="block"></div>
+      <div id="block_3" class="block"></div>
+      <div id="block_4" class="block"></div>
+      <div id="block_5" class="block"></div>
+      <div id="block_6" class="block"></div>
+      <div id="block_7" class="block"></div>
+      <div id="block_8" class="block"></div>
+    </div>
+  </div>
+
+  <div class="replay">
+    <h2 id="restart"></h2>
+    <button onclick="play_again()">Play Again!</button>
+  </div>
+
+</body>
+</html>
