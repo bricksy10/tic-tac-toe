@@ -39,6 +39,45 @@ const onUpdateGame = function (event) {
     .catch(ui.updateGameFailure)
 }
 
+const winningCombos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+]
+
+function handleCellClick (clickedCellEvent) {
+  const clickedCell = clickedCellEvent.target
+  /*
+Here we will grab the 'data-cell-index' attribute from the clicked cell to identify where that cell is in our grid.
+Please note that the getAttribute will return a string value. Since we need an actual number we will parse it to an
+integer(number)
+*/
+  const clickedCellIndex = parseInt(
+    clickedCell.getAttribute('data-cell-index')
+  )
+  if (gameStatus[clickedCellIndex] !== '' || !gameActive) {
+    return
+  }
+
+  handleCellPlayed(clickedCell, clickedCellIndex)
+  handleResultValidation()
+}
+
+function blockPlayed (clickedBlock, clickedBlockIndex) {
+  gameState[clickedCellIndex] = currentPlayer
+  clickedCell.innerHTML = currentPlayer
+}
+
+function handlePlayerChange () {
+  currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
+  statusDisplay.innerHTML = currentPlayerTurn()
+}
+
 module.exports = {
   onPlayGame,
   onIndexGames,
