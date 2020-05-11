@@ -2,28 +2,31 @@
 
 const store = require('../store')
 
-const onCreateSuccess = function (data) {
-  $('#message').text('Game successfully created')
+const onPlaySuccess = function(data) {
+  store.games = data.game
+  $('#message').text("player one's turn")
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('onCreateSuccess ran. Data is :', data)
+  $('#authenticated').show()
+  $('#unauthenticated').hide()
+  console.log('onPlaySuccess ran. Data is :', data)
 }
 
-const onCreateFailure = function (error) {
+const onPlayFailure = function(error) {
   $('#message').text('Error on creating game')
   $('#message').removeClass()
   $('#message').addClass('failure')
-  console.error('onCreateFailure ran. Error is :', error)
+  console.error('onPlayFailure ran. Error is :', error)
 }
 
-const onIndexSuccess = function (data) {
+const onIndexSuccess = function(data) {
   $('#message').text('All games successfully received')
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('onIndexSuccess ran. Data is :', data.games)
 }
 
-const onIndexFailure = function (error) {
+const onIndexFailure = function(error) {
   $('#message').text('Error on getting games')
   $('#message').removeClass()
   $('#message').addClass('failure')
@@ -34,7 +37,7 @@ const onIndexFailure = function (error) {
 //   $('#message').text('One game successfully received')
 //   $('#message').removeClass()
 //   $('#message').addClass('success')
-//   console.log('onCreateSuccess ran. Data is :', data)
+//   console.log('onPlaySuccess ran. Data is :', data)
 // }
 
 // const onShowFailure = function (error) {
@@ -44,40 +47,59 @@ const onIndexFailure = function (error) {
 //   console.error('onShowFailure ran. Error is :', error)
 // }
 
-const onDestroySuccess = function () {
+const onDestroySuccess = function() {
   $('#message').text('Game successfully deleted')
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('#authenticated').hide()
+  $('#unauthenticated').show()
   console.log('Game successfully deleted')
 }
 
-const onDestroyFailure = function (error) {
+const onDestroyFailure = function(error) {
   $('#message').text('Error on deleting game')
   $('#message').removeClass()
   $('#message').addClass('failure')
   console.error('onDestroyFailure ran. Error is :', error)
 }
 
-const onUpdateSuccess = function () {
+const onUpdateSuccess = function() {
   $('#message').text('Game successfully updated')
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('Game successfully updated')
 }
 
-const onUpdateFailure = function (error) {
+const onUpdateFailure = function(error) {
   $('#message').text('Error on updating game')
   $('#message').removeClass()
   $('#message').addClass('failure')
   console.error('onUpdateFailure ran. Error is :', error)
 }
 
-const currentPlayer = 'x'
+const player1 = 'x'
+const player2 = 'o'
+const gameActive = false
 const gameStatus = ['', '', '', '', '', '', '', '', '']
 
-const player1Selections = new Array[]
+const winningConditions = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+]
 
-const player2Selections = new Array[]
+const player1Turn = null
+let turn = 0
+const winner = null
+const handlePlayerChange = function() {
+  turn = player1 === 'X' ? 'O' : 'X'
+  gameStatus.innerHTML = player1Turn()
+}
 
 const checkWinner = array => {
   if (array.length !== 9) {
@@ -110,26 +132,26 @@ const checkWinner = array => {
   return null
 }
 
-const winningMessage = () => `Player ${currentPlayer} has won!`
-const drawMessage = () => `Game ended in a draw!`
-const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`
+const winnerIs = function(data) {
+    if (winner === 'x') {
+      winnerIs = 'Player1'
+    } else {
+      winnerIs = 'Player2'
+    }
 
-module.exports = {
-  onCreateSuccess,
-  onCreateFailure,
-  onIndexSuccess,
-  onIndexFailure,
-  // onShowSuccess,
-  // onShowFailure,
-  onDestroySuccess,
-  onDestroyFailure,
-  onUpdateSuccess,
-  onUpdateFailure,
-  currentPlayer,
-  gameStatus,
-  player1Selections,
-  player2Selections,
-  winningMessage,
-  drawMessage,
-  currentPlayerTurn
-}
+    module.exports = {
+      onPlaySuccess,
+      onPlayFailure,
+      onIndexSuccess,
+      onIndexFailure,
+      // onShowSuccess,
+      // onShowFailure,
+      onDestroySuccess,
+      onDestroyFailure,
+      onUpdateSuccess,
+      onUpdateFailure,
+      winningConditions,
+      handlePlayerChange,
+      checkWinner,
+      winnerIs
+    }
